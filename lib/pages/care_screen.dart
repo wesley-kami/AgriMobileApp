@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class CareScreen extends StatelessWidget {
   @override
@@ -7,7 +8,13 @@ class CareScreen extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 245, 248, 242),
       //barre de recherche
       appBar: AppBar(),
+
       //jooohnnn
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Stack();
+        },
+      ),
     );
   }
 
