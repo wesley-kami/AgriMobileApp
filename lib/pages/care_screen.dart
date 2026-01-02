@@ -12,7 +12,151 @@ class CareScreen extends StatelessWidget {
       //jooohnnn
       body: LayoutBuilder(
         builder: (context, constraints) {
-          return Stack();
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: IntrinsicHeight(
+                    child: Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: Column(
+                        children: [
+                          // section du bas
+                          Container(
+                            padding: const EdgeInsets.all(5),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              //texte Today etc
+                              children: [
+                                const Text(
+                                  'Today Weather',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                  ),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 410,
+                                    decoration: BoxDecoration(
+                                      color: Colors.blue[50],
+                                      borderRadius: BorderRadius.circular(31),
+                                      // ajout de l'image d'arriere plan
+                                      image: const DecorationImage(
+                                        image: AssetImage('assets/img/img.jpg'),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    child: Stack(children: []),
+                                  ),
+                                ),
+                                const SizedBox(height: 25),
+                                // en-tête des maladies
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Diseases',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      const Text(
+                                        'See all',
+                                        style: TextStyle(
+                                          color: Color.fromARGB(
+                                            255,
+                                            105,
+                                            106,
+                                            106,
+                                          ),
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 15),
+                              ],
+                            ),
+                          ),
+                          // première ligne de cartes de maladies
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: _buildDiseaseCard(
+                                    time: 'Today 2.00 PM',
+                                    title: 'Angular',
+                                    subtitle: 'Leaf spot of...',
+
+                                    imagePath: 'assets/img/angular.jpg',
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: _buildDiseaseCard(
+                                    time: 'Today 4.00 PM',
+                                    title: 'Ascochyta',
+                                    subtitle: 'Blight',
+
+                                    imagePath: 'assets/img/asco.jpeg',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          // deuxième ligne de cartes de maladies
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: _buildDiseaseCard(
+                                    time: 'Today 6.00 PM',
+                                    title: 'Powdery',
+                                    subtitle: 'Mildew',
+
+                                    imagePath: 'assets/img/powdery.jpeg',
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: _buildDiseaseCard(
+                                    time: 'Today 8.00 PM',
+                                    title: 'Root Rot',
+                                    subtitle: 'Fungal disease',
+
+                                    imagePath: 'assets/img/root_rot.jpeg',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          // espace pour la barre de navigation
+                          const SizedBox(height: 80),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
         },
       ),
     );
