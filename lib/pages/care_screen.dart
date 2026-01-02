@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class CareScreen extends StatelessWidget {
+  const CareScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,33 +31,6 @@ class CareScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               //texte Today etc
                               children: [
-                                const Text(
-                                  'Today Weather',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                  ),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 410,
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue[50],
-                                      borderRadius: BorderRadius.circular(31),
-                                      // ajout de l'image d'arriere plan
-                                      image: const DecorationImage(
-                                        image: AssetImage('assets/img/img.jpg'),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    child: Stack(children: []),
-                                  ),
-                                ),
                                 const SizedBox(height: 25),
                                 // en-tête des maladies
                                 Padding(
