@@ -109,4 +109,87 @@ class CareScreen extends StatelessWidget {
       ),
     );
   }
+
+  // construction d'un bouton de navigation avec icne
+  Widget _buildNavButton({
+    required IconData icon,
+    required bool isActive,
+    required VoidCallback onTap,
+  }) {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        color: isActive ? Colors.white : const Color.fromARGB(255, 39, 120, 42),
+        shape: BoxShape.circle,
+        border: isActive
+            ? Border.all(color: const Color(0xFF4CAF50), width: 2)
+            : null,
+      ),
+      child: IconButton(
+        icon: Icon(
+          icon,
+          color: isActive ? const Color(0xFF4CAF50) : Colors.white,
+          size: 24,
+        ),
+        onPressed: onTap,
+      ),
+    );
+  }
+
+  // construction du bouton care spécial
+  Widget _buildCareButton() {
+    return Container(
+      height: 50,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(25),
+        border: Border.all(color: const Color(0xFF4CAF50), width: 2),
+      ),
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Care',
+            style: TextStyle(
+              color: Color(0xFF4CAF50),
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  //construction de la barre de navigation inferieure
+  Widget _buildBottomNavigationBar() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, -1),
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // bouton home
+          _buildNavButton(icon: Icons.home, isActive: false, onTap: () {}),
+          // bouton plante
+          _buildNavButton(icon: Icons.eco, isActive: false, onTap: () {}),
+          // bouton care (actif)
+          _buildCareButton(),
+          // bouton profil
+          _buildNavButton(icon: Icons.person, isActive: false, onTap: () {}),
+        ],
+      ),
+    );
+  }
 }
