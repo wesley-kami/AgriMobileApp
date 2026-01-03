@@ -10,7 +10,7 @@ class Appbar extends StatelessWidget {
       child: AppBar(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30), // Adjust the "30" for more or less curve
+            bottom: Radius.circular(30),
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 192, 221, 214),
@@ -30,7 +30,7 @@ class Appbar extends StatelessWidget {
                         'Discover Your Plant',
                         style: TextStyle(
                           fontWeight: FontWeight.w800, 
-                          fontSize: 13.0, // Slightly bigger for hierarchy
+                          fontSize: 13.0,
                           color: Colors.black87,
                         ),
                       ),
@@ -45,23 +45,34 @@ class Appbar extends StatelessWidget {
                     ],
                   ),
                   const Spacer(),
-                  // The more button
+                  //The More button
                   Container(
-                    padding: const EdgeInsets.all(6),
+                    height: 35,
+                    width: 35,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
-                      Icons.more_horiz,
-                      color: Colors.black,
-                      size: 24,
+                    child: IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(
+                        minWidth: 32,
+                        minHeight: 32,
+                      ),
+                      icon: const Icon(
+                        Icons.more_horiz,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                      onPressed: () {
+                        print("More button pressed!"); // Add your logic here
+                      },
                     ),
                   )
                 ],
               ),
               
-              const SizedBox(height: 20), // Space between rows
+              const SizedBox(height: 20),
 
               // --- BOTTOM ROW: Search Bar ---
               Expanded(child: TextField(

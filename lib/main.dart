@@ -23,6 +23,7 @@ class _MyAppState extends State<MyApp> {
         body:Stack(
           clipBehavior: Clip.none,
           children: [
+          const SizedBox(height: 380, width: double.infinity),
           const Appbar(),
           Positioned(
             top: 160, // Adjust this number to create the "Overlap"

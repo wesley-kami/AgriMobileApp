@@ -45,7 +45,6 @@ class Productslist extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white, 
                   borderRadius: BorderRadius.circular(40),
-                  // Adding a subtle shadow makes it "pop" over the green
                   boxShadow: [
                     BoxShadow(
                       color: const Color.fromARGB(255, 183, 181, 181),
@@ -54,16 +53,16 @@ class Productslist extends StatelessWidget {
                     ),
                   ],
                 ),
-                width: 67, // Slightly wider for better spacing
+                width: 67,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center, // Centers everything vertically
+                  mainAxisAlignment: MainAxisAlignment.center, 
                   children: [
                     ClipOval(
                       child: Image.asset(
                         fruitImages[index],
-                        height: 50, // Fixed height
-                        width: 50,  // Fixed width
-                        fit: BoxFit.cover, // Ensures it fills the circle
+                        height: 50,
+                        width: 50,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     const SizedBox(height: 12),
