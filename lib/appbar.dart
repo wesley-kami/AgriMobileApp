@@ -74,7 +74,6 @@ class Appbar extends StatelessWidget {
               
               const SizedBox(height: 20),
 
-              // --- BOTTOM ROW: Search Bar ---
               Expanded(child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search your favorite plant...',
