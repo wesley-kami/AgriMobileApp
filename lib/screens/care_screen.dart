@@ -1,11 +1,11 @@
+import 'package:agrimobileapp/interface_1.dart';
+import 'package:agrimobileapp/interface_3.dart';
 import 'package:flutter/material.dart';
 
 class CareScreen extends StatelessWidget {
-  final Function(int)? onNavigate; // ajout dece paramètre
 
   const CareScreen({
     super.key,
-    this.onNavigate,
     this.isActivePage = false, //ajout de ce paramètre
   });
 
@@ -68,7 +68,7 @@ class CareScreen extends StatelessWidget {
         ),
       ),
       // ajout de la barre de navigation fixe en bas
-      // bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: _buildBottomNavigationBar(context),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Stack(
@@ -242,7 +242,11 @@ class CareScreen extends StatelessWidget {
                                                       ],
                                                     ),
                                                   ),
-                                                  onTap: () {},
+                                                  onTap: () {
+                                                    Navigator.push(context, 
+                                                    MaterialPageRoute(builder: (context) => Interface_1())
+                                                    );
+                                                  },
                                                 ),
                                               ),
                                             ),
@@ -457,7 +461,7 @@ class CareScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomNavigationBar() {
+  Widget _buildBottomNavigationBar(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -473,25 +477,14 @@ class CareScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // bouton home
-          _buildNavButton(
-            icon: Icons.home,
-            isActive: false,
-            onTap: () {
-              if (onNavigate != null) {
-                onNavigate!(0); // ← 0 = Home
-              }
-            },
-          ),
-
           // bouton plante
           _buildNavButton(
             icon: Icons.eco,
             isActive: false,
             onTap: () {
-              if (onNavigate != null) {
-                onNavigate!(1); // 1 = Plants
-              }
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => Interface_1())
+              );
             },
           ),
 
@@ -503,9 +496,9 @@ class CareScreen extends StatelessWidget {
             icon: Icons.person,
             isActive: false,
             onTap: () {
-              if (onNavigate != null) {
-                onNavigate!(3); // 3 = Profile
-              }
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => Interface3())
+              );
             },
           ),
         ],
