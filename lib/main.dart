@@ -1,3 +1,4 @@
+import 'package:agrimobileapp/interface_3.dart';
 import 'package:flutter/material.dart';
 import 'interface_1.dart';
 
@@ -17,7 +18,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Interface_1(),
+      home: const Interface_1(),
+
     );
   }
 }
