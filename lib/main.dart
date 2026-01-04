@@ -1,71 +1,126 @@
 import 'package:flutter/material.dart';
-// import 'screens/home_screen.dart';
-// import 'screens/plants_screen.dart';
+import 'interface_1.dart';
 import 'screens/care_screen.dart';
-// import 'screens/profile_screen.dart';
+import 'package:agrimobileapp/interface_3.dart';
 
 void main() {
-  runApp(PlantApp());
+  runApp(MyApp());
 }
 
-class PlantApp extends StatelessWidget {
-  const PlantApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+Widget _buildBottomNavigationBar() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, -1),
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // bouton home
+          _buildNavButton(
+            icon: Icons.home,
+            isActive: false,
+            onTap: () {},
+          ),
+
+          // bouton plante
+          _buildNavButton(
+            icon: Icons.eco,
+            isActive: false,
+            onTap: () {},
+          ),
+
+          // bouton care (actif) reste sur place
+          _buildCareButton(),
+
+          // bouton profil
+          _buildNavButton(
+            icon: Icons.person,
+            isActive: false,
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
+  }
+
+  // construction d'un bouton de navigation avec icne
+  Widget _buildNavButton({
+    required IconData icon,
+    required bool isActive,
+    required VoidCallback onTap,
+  }) {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        color: isActive ? Colors.white : const Color.fromARGB(255, 39, 120, 42),
+        shape: BoxShape.circle,
+        border: isActive
+            ? Border.all(color: const Color(0xFF4CAF50), width: 2)
+            : null,
+      ),
+      child: IconButton(
+        icon: Icon(
+          icon,
+          color: isActive ? const Color(0xFF4CAF50) : Colors.white,
+          size: 24,
+        ),
+        onPressed: onTap,
+      ),
+    );
+  }
+
+  // construction du bouton care
+  Widget _buildCareButton() {
+    return Container(
+      height: 50,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(25),
+        border: Border.all(color: const Color(0xFF4CAF50), width: 2),
+      ),
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.food_bank_outlined, color: Colors.green, size: 20),
+          SizedBox(width: 8),
+          Text(
+            'Care',
+            style: TextStyle(
+              color: Color(0xFF4CAF50),
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Plant App',
-      theme: ThemeData(primarySwatch: Colors.green, fontFamily: 'Poppins'),
-      home: MainNavigationScreen(),
       debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class MainNavigationScreen extends StatefulWidget {
-  const MainNavigationScreen({super.key});
-
-  @override
-  _MainNavigationScreenState createState() => _MainNavigationScreenState();
-}
-
-class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _currentIndex =
-      0; //commence par Home (0=Home, 1=Plants, 2=Care, 3=Profile)
-
-  // Fonction pour changer d'écran
-  void _changeScreen(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // Retourne l'écran approprié avec la fonction de navigation
-    switch (_currentIndex) {
-      // case 0: // Home
-      //   return HomeScreen(
-      //     onNavigate: _changeScreen,
-      //     isActivePage: true, // Home est la page active
-      //   );
-      // case 1: // Plants
-      //   return PlantsScreen(
-      //     onNavigate: _changeScreen,
-      //     isActivePage: true, // Plants est la page active
-      //   );
-      case 2: // Care
-        return CareScreen(
-          onNavigate: _changeScreen,
-          isActivePage: true, //Care est la page active
-        );
-      // case 3: // Profile
-      //   return ProfileScreen(
-      //     onNavigate: _changeScreen,
-      //     isActivePage: true, // Profile est la page active
-      //   );
-      default:
-        return CareScreen(onNavigate: _changeScreen, isActivePage: true);
-    }
+      home:CareScreen(),
+      
+      );
   }
 }

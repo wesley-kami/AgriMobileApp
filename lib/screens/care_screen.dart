@@ -68,7 +68,7 @@ class CareScreen extends StatelessWidget {
         ),
       ),
       // ajout de la barre de navigation fixe en bas
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      // bottomNavigationBar: _buildBottomNavigationBar(),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Stack(
